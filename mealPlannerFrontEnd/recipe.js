@@ -5,11 +5,11 @@ fetch('http://localhost:3000/recipes')
 
 
 
-var show = function (elem) {
+let show = function (elem) {
     elem.style.display = 'block';
 };
 
-var hide = function (elem) {
+let hide = function (elem) {
     elem.style.display = 'none';
 };
 
@@ -23,17 +23,35 @@ function recipeCard(recipes){
         eachRecipeCard.className = 'recipeCard'
         
         const recipeName = document.createElement('h3')
-        const picture = document.createElement('img')
-        const ingredientList = document.createElement('ul')
-        const eachIngredient = document.createElement('li')
-        const moreInfo = document.createElement('p')
-        const recipeInstructions = document.createElement('p')
-        const deleteButton = document.createElement('button')
+        recipeName.id = 'recipeName'
 
-        deleteButton.id = 'deleteRecipeButton'
-        recipeInstructions.id = 'instructions'
+        const picture = document.createElement('img')
+        picture.id = 'picture'
+
+        const ingredientList = document.createElement('ul')
+        ingredientList.id = 'ingredientList'
+
+        const eachIngredient = document.createElement('li')
+        eachIngredient.id = 'eachIngredient'
+
+        const moreInfo = document.createElement('p')
         moreInfo.id = 'moreInfo'
+
+        const recipeInstructions = document.createElement('p')
+        recipeInstructions.id = 'instructions'
         
+        const deleteButton = document.createElement('button')
+        deleteButton.id = 'deleteRecipeButton'
+
+        const editButton = document.createElement('button')
+        editButton.id = 'editRecipeButton'
+
+        const submitChangesButton = document.createElement('button')
+        submitChangesButton.id = 'submitRecipeChangesButton'
+
+        const buttonHolder = document.createElement('div')
+        buttonHolder.id = 'recipeButtonHolder'
+
         
         recipeName.innerText = recipe.name 
         picture.src = recipe.image_url 
@@ -41,9 +59,13 @@ function recipeCard(recipes){
         moreInfo.innerHTML = '<p><i class="arrow down"></i></p>'
         recipeInstructions.innerText = recipe.instructions
         deleteButton.innerText = 'Delete Recipe'
+        editButton.innerText = 'Edit Recipe'
+        submitChangesButton.innerText = 'Submit Changes'
+
 
         ingredientList.append(eachIngredient)
-        eachRecipeCard.append(recipeName, picture, ingredientList, moreInfo, recipeInstructions, deleteButton)
+        buttonHolder.append(deleteButton, editButton)
+        eachRecipeCard.append(recipeName, picture, ingredientList, moreInfo, recipeInstructions, buttonHolder)
 
         recipeHolder.appendChild(eachRecipeCard)
 
@@ -53,26 +75,66 @@ function recipeCard(recipes){
             if (window.getComputedStyle(recipeInstructions).display === 'none') {
                 show(recipeInstructions)
                 show(deleteButton)
+                show(editButton)
                 return
             }
             else 
             hide(recipeInstructions)
             hide(deleteButton)
+            hide(editButton)
 
+        })
+
+
+        editButton.addEventListener('click', e => {
+            if (eachRecipeCard.contentEditable == 'false'){
+                eachRecipeCard.contentEditable = 'true'
+                editButton.innerText = 'Submit Changes'
+                eachRecipeCard.style.background = "white"
+                editButton.addEventListener('click', e => {
+
+                    const nameOfRecipe = recipeName.innerText
+                    const imageForRecipe = picture.src
+                    const ingredientsForRecipe = eachIngredient.innerText
+                    const instructionsForRecipe = recipeInstructions.innerText
+                  
+
+                    // console.log('new recipe', newRecipe)
+                    fetch(`http://localhost:3000/recipes/${recipe.id}`,{
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+            
+                    body: JSON.stringify({ name: nameOfRecipe,
+                        image_url: imageForRecipe,
+                        ingredients: ingredientsForRecipe,
+                        instructions: instructionsForRecipe })
+                    
+                })
+                
+                })
+            }
+                
+            else {
+                eachRecipeCard.contentEditable = 'false'
+                editButton.innerText = 'Edit Recipe'
+                eachRecipeCard.style.background =  'rgba(121, 189, 154, 0.5)'
+            }
         })
 
         deleteButton.addEventListener('click', e => deleteRecipe(recipe.id, e))
     })
 }
 
-addRecipeButton.addEventListener('click', () =>{
-    if (window.getComputedStyle(recipeFormHolder).display === 'none') {
-        show(recipeFormHolder);
-        return;
-    }
-    else 
-    hide(recipeFormHolder)
-})
+    addRecipeButton.addEventListener('click', () =>{
+        if (window.getComputedStyle(recipeFormHolder).display === 'none') {
+            show(recipeFormHolder);
+            return;
+        }
+        else 
+        hide(recipeFormHolder)
+    })
 
 function createRecipe(){
     const recipeFormHolder = document.getElementById('recipeFormHolder')
@@ -95,7 +157,6 @@ function createRecipe(){
     recipeForm.addEventListener('submit', event =>{
         event.preventDefault()
         const formData = new FormData(recipeForm)
-        console.log('form data', formData)
         recipeForm.reset()
     
         const recipe = {
@@ -112,7 +173,7 @@ function createRecipe(){
             },
     
             body: JSON.stringify({ recipe })
-        }).then(response => response.json())
+        })
       
     })
 }

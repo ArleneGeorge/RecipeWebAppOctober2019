@@ -25,6 +25,16 @@ class RecipesController < ApplicationController
         @recipe.destroy
     end
 
+    def update
+        @recipe = Recipe.find(params[:id])
+        # @recipe.update(name: params[:recipe][:name], image_url: params[:recipe][:image_url], ingredients: params[:recipe][:ingredients], instructions: params[:recipe][:instructions])
+        if @recipe.update(recipe_params)
+        render json: @recipe
+        else 
+            render :edit
+        end
+    end
+
     private 
     def set_recipe
         @recipe = Recipe.find(params[:id])
@@ -32,6 +42,6 @@ class RecipesController < ApplicationController
 
 
     def recipe_params
-        params.require(:recipe).permit(:name, :image_url, :ingredients, :instructions)
+        params.require(:recipe).permit(:recipe_id, :name, :image_url, :ingredients, :instructions)
     end
 end
