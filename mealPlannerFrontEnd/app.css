@@ -1,0 +1,113 @@
+
+body{
+    background-image: url('https://cdn.pixabay.com/photo/2017/10/22/20/39/food-2879202_960_720.jpg') ;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#recipeForm{
+    display: inline;
+    
+}
+
+
+#recipeFormHolder{
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20rem;
+    height: auto;
+    font-family: 'The Girl Next Door', cursive;
+}
+
+.formInput {
+    width: 20rem;
+    height: 20px;
+    
+}
+
+header{
+    height: 50px;
+    width: 100%;
+    background: rgba(121, 189, 154, 0.5);
+    font-family: 'The Girl Next Door', cursive;
+    font-size: 30px;
+}
+ h3{
+    font-family: 'The Girl Next Door', cursive;
+    font-weight: 100;
+ }
+
+#recipeIngredient{
+height: 5rem;
+}
+
+#recipeInstructions{
+    height: 10rem;
+}
+
+.recipeCard{
+    display: block;
+    text-align: center;
+    border-style: groove;
+    border-color:#dcd2d2;
+    border-radius: 10px;
+    background: rgba(121, 189, 154, 0.5);
+    color: rgb(11,72,107);
+    font-family: 'Raleway', sans-serif;
+}
+
+
+i {
+    border: solid rgb(11,72,107);
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: rgb(59,134,134);
+}
+.recipeCard > img{
+    width: 200px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#recipeCardHolder{
+    display: grid;
+    width: 80%;
+    margin: auto;
+    grid-template-columns: repeat(3, 32%);
+    column-gap: 30px;
+    padding-top: 5rem;
+}
+#instructions{
+    display: none;
+}
+
+#deleteRecipeButton{
+    display: none;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    list-style: none;
+    color: rgb(59,134,134);
+    
+}
+
+nav > li{
+    padding-left: 80px;  
+}

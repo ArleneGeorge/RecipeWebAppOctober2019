@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  weekday: one
+  meal: one
+  recipe: one
+  favorite: one
+
+two:
+  user: two
+  weekday: two
+  meal: two
+  recipe: two
+  favorite: two

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="app.css">
+    <title>Meal Planner</title>
+</head>
+<body>
+    <header>
+        <nav id='mainNavigation'>
+            <li><a href = "recipe.html" >Recipes</a></li>
+            <li>Menu</li>
+        </nav>
+    </header>
+
+    <div id='recipeFormHolder'>
+            <form id ='recipeForm'>
+                <label for='name'>Recipe Name</label>
+                <input type='text' class='formInput' id='recipeName' name='name'/>
+                <label for='image'>Picture URL</label>
+                <input type='text' class='formInput' id='recipeImage' name='image'/>
+                <label for='ingredient'>Ingredients</label>
+                <input type='text' class='formInput' id='recipeIngredient' name='ingredient'/>
+                <label for='instructions'>Instructions</label>
+                <input type='text' class='formInput' id='recipeInstructions' name='instructions'/>
+                <input type='submit'>
+            </form>
+    
+        </div>
+
+    <script src="createRecipe.js"></script>
+</body>
+</html>
