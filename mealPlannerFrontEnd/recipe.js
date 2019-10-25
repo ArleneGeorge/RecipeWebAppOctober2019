@@ -70,12 +70,16 @@ function recipeCard(recipes){
         moreInfo.addEventListener('click', e => {
             
             if (window.getComputedStyle(recipeInstructions).display === 'none') {
+                show(ingredientList)
+                // show(eachIngredient)
                 show(recipeInstructions)
                 show(deleteButton)
                 show(editButton)
                 return
             }
             else 
+            hide(ingredientList)
+            // hide(eachIngredient)
             hide(recipeInstructions)
             hide(deleteButton)
             hide(editButton)
@@ -143,7 +147,7 @@ function createRecipe(){
 
     recipeName.innerHTML = `<label for='name'>Recipe Name</label>\n<input type='text' class='formInput' id='recipeName' name='name'/>`
     recipeImage.innerHTML = `<label for='image'>Picture URL</label>\n<input type='text' class='formInput' id='recipeImage' name='image'/>`
-    recipeIngredients.innerHTML = `<label for='ingredient'>Ingredients</label>\n<textarea type='text' class='formInput' id='recipeIngredient' name='ingredient'/>`
+    recipeIngredients.innerHTML = `<label for='ingredient'>Ingredients</label>\n<textarea type='text' class='formInput' id='recipeIngredients' name='ingredients'/>\n\n `
     recipeInstructions.innerHTML = `<label for='instructions'>Instructions</label>\n<textarea type='text' class='formInput' id='recipeInstructions' name='instructions'/>\n\n `
     submitButton.innerHTML = `<input id='recipeSubmitButton' type='submit'>`    
 
@@ -153,14 +157,17 @@ function createRecipe(){
     recipeForm.addEventListener('submit', event =>{
         event.preventDefault()
         const formData = new FormData(recipeForm)
+        
         recipeForm.reset()
     
         const recipe = {
             name: formData.get("name"),
             image_url: formData.get("image"),
-            ingredients: formData.get("ingredient"),
+            ingredients: formData.get("ingredients"),
             instructions: formData.get("instructions")
         }
+
+        console.log('recipe', recipe)
     
         fetch(`http://localhost:3000/recipes`,{
             method: 'POST',
