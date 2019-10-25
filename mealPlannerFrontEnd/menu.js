@@ -25,31 +25,40 @@ fetch('http://localhost:3000/menus')
             menuCard.id = 'menuCard'
 
             const showWeekday = document.createElement('p')
+            showWeekday.innerText = menu.weekday
+
             const showMeal = document.createElement('p')
+            showMeal.innerText = menu.meal
+
             const showRecipe = document.createElement('p')
+            showRecipe.innerText = menu.recipe.name
+
             const showRecipeImage = document.createElement('img')
+            showRecipeImage.src = menu.recipe.image_url
+
             const showRecipeIngredients = document.createElement('p')
+            showRecipeIngredients.id = 'showRecipeIngredients'
+            showRecipeIngredients.innerText = menu.recipe.ingredients
+
             const showRecipeInstructions = document.createElement('p')
+            showRecipeInstructions.id = 'showRecipeInstructions'
+            showRecipeInstructions.innerText = menu.recipe.instructions
+
+            const moreInfo= document.createElement('p')                
+                moreInfo.id = 'moreInfo'
+                moreInfo.innerHTML = '<p><i class="arrow down"></i></p>'
 
             const deleteMenuButton = document.createElement('button')
             deleteMenuButton.id = 'deleteMenuButton'
             deleteMenuButton.innerText = 'Delete Menu'
 
-            showRecipeIngredients.id = 'showRecipeIngredients'
-            showRecipeInstructions.id = 'showRecipeInstructions'
-
-            showWeekday.innerText = menu.weekday
-            showMeal.innerText = menu.meal
-            showRecipe.innerText = menu.recipe.name
-            showRecipeImage.src = menu.recipe.image_url
-            showRecipeIngredients.innerText = menu.recipe.ingredients
-            showRecipeInstructions.innerText = menu.recipe.instructions
-            menuCard.append(showWeekday, showMeal, showRecipe, showRecipeImage, showRecipeIngredients, showRecipeInstructions, deleteMenuButton)
+            
+            
+            menuCard.append(showWeekday, showMeal, showRecipe, showRecipeImage, showRecipeIngredients, moreInfo, showRecipeInstructions, deleteMenuButton)
             menuContainter.appendChild(menuCard)
             body.appendChild(menuContainter)
 
-            showRecipeImage.addEventListener('click', e => {
-                console.log('menu', menuCard)
+            moreInfo.addEventListener('click', e => {
 
                 if (window.getComputedStyle(showRecipeInstructions).display === 'none') {
                     show(showRecipeInstructions)
@@ -70,10 +79,6 @@ fetch('http://localhost:3000/menus')
         
     }
 
-   
-
-    
-    
 
 function createMenu(){
     const menuName = document.createElement('p')
@@ -88,7 +93,7 @@ function createMenu(){
 
     
     selectWeekday.innerHTML = 
-    `<label>Weekday</label>
+    `<label>Day</label>
     <select name="weekday", id='weekday_dropdown'>
       <option value="Sunday">Sunday</option>
       <option value="Monday">Monday</option>
