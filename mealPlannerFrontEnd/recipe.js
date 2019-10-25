@@ -37,7 +37,7 @@ function recipeCard(recipes){
         eachIngredient.id = 'eachIngredient'
         eachIngredient.innerText = recipe.ingredients
 
-        const moreInfo = document.createElement('p')
+        const moreInfo = document.createElement('h4')
         moreInfo.id = 'moreInfo'
         moreInfo.innerHTML = '<p><i class="arrow down"></i></p>'
 
@@ -155,7 +155,6 @@ function createRecipe(){
     recipeFormHolder.appendChild(recipeForm)
 
     recipeForm.addEventListener('submit', event =>{
-        event.preventDefault()
         const formData = new FormData(recipeForm)
         
         recipeForm.reset()
@@ -183,7 +182,6 @@ function createRecipe(){
 
 function deleteRecipe(id, e) {
     e.target.parentNode.remove()
-    console.log(id)
 
     fetch(`http://localhost:3000/recipes/${id}`, {
         method: 'DELETE'

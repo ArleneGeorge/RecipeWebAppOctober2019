@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+    before_action :set_user, only: [:show, :update, :destroy]
+
     def index
         @users = User.all 
         render json: @users
@@ -10,7 +13,7 @@ class UsersController < ApplicationController
     end 
 
     def create
-        @user = user.new(user_parmas)
+        @user = User.new(user_params)
         if @user.valid?
             @user.save
             render json: @user 
@@ -24,7 +27,12 @@ class UsersController < ApplicationController
     end
 
     private 
-    def user_parmas
-        params.require(:user).permit(:name, :username, :password)
+
+    def set_user
+        @user = User.find(params[:id])
+    end
+
+    def user_params
+        params.require(:user).permit(:name, :username, :image_url, :password)
     end
 end

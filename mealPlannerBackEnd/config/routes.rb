@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 resources :menus
 resources :recipes
 resources :favorites, only: [:index, :show, :create, :delete]
-resources :users, only: [:index, :show, :create, :delete]
+resources :users
 resources :meals, only: [:index, :show]
 resources :weekdays, only: [:index, :show]
 

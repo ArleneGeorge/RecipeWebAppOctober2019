@@ -44,7 +44,7 @@ fetch('http://localhost:3000/menus')
             showRecipeInstructions.id = 'showRecipeInstructions'
             showRecipeInstructions.innerText = menu.recipe.instructions
 
-            const moreInfo= document.createElement('p')                
+            const moreInfo= document.createElement('h4')                
                 moreInfo.id = 'moreInfo'
                 moreInfo.innerHTML = '<p><i class="arrow down"></i></p>'
 
@@ -81,8 +81,6 @@ fetch('http://localhost:3000/menus')
 
 
 function createMenu(){
-    const menuName = document.createElement('p')
-    menuName.innerHTML = `<label for='name'>Menu Name</label>\n<input type='text' class='formInput' id='menuName' name='name'/>`
 
     const menuFormHolder = document.getElementById('menuFormHolder')
     const menuForm = document.createElement('form')
@@ -147,8 +145,8 @@ function recipeOptions(recipes){
   
 
 
-    menuSubmitButton.addEventListener('click', event =>{
-        event.preventDefault()
+    menuSubmitButton.addEventListener('click', function (event){
+        // event.preventDefault()
         const formData = new FormData(menuForm)
         
     
