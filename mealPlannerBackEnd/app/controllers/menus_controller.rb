@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
+    before_action :set_menu, only: [:show, :update, :destroy]
     def index
         @menus = Menu.all 
         render json: @menus, include: :recipe
