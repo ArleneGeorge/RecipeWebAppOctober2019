@@ -27,7 +27,6 @@ class RecipesController < ApplicationController
 
     def update
         @recipe = Recipe.find(params[:id])
-        # @recipe.update(name: params[:recipe][:name], image_url: params[:recipe][:image_url], ingredients: params[:recipe][:ingredients], instructions: params[:recipe][:instructions])
         if @recipe.update(recipe_params)
         render json: @recipe
         else 

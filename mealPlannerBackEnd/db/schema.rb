@@ -31,18 +31,12 @@ ActiveRecord::Schema.define(version: 2019_10_22_035129) do
   end
 
   create_table "menus", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "weekday_id", null: false
-    t.bigint "meal_id", null: false
+    t.string "weekday"
+    t.string "meal"
     t.bigint "recipe_id", null: false
-    t.bigint "favorite_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["favorite_id"], name: "index_menus_on_favorite_id"
-    t.index ["meal_id"], name: "index_menus_on_meal_id"
     t.index ["recipe_id"], name: "index_menus_on_recipe_id"
-    t.index ["user_id"], name: "index_menus_on_user_id"
-    t.index ["weekday_id"], name: "index_menus_on_weekday_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -70,9 +64,5 @@ ActiveRecord::Schema.define(version: 2019_10_22_035129) do
 
   add_foreign_key "favorites", "recipes"
   add_foreign_key "favorites", "users"
-  add_foreign_key "menus", "favorites"
-  add_foreign_key "menus", "meals"
   add_foreign_key "menus", "recipes"
-  add_foreign_key "menus", "users"
-  add_foreign_key "menus", "weekdays"
 end
