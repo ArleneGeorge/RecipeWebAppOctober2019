@@ -1,21 +1,17 @@
 class MenusController < ApplicationController
     def index
         @menus = Menu.all 
-        render json: @menus
+        render json: @menus, include: :recipe
     end
 
     def show
         @menu = Menu.find(params[:id])
+        render json: @menu, include: :recipe
     end
 
     def create
-        @menu = Menu.new(menu_parmas)
-        if @menu.valid?
-            @menu.save
-            render json: @menu 
-        else
-            render json: @menu.errors.full_messages
-        end
+        @menu = Menu.create(menu_params)
+        render json: @menu
     end
 
     def destroy
@@ -23,7 +19,12 @@ class MenusController < ApplicationController
     end
 
     private 
-    def menu_parmas
-        params.require(:menu).permit(:user_id, :weekday_id, :meal_id, :recipe_id, :favorite_id)
+
+    def set_menu
+        @menu = Menu.find(params[:id])
+    end
+
+    def menu_params
+        params.require(:menu).permit(:weekday, :meal, :recipe_id)
     end
 end

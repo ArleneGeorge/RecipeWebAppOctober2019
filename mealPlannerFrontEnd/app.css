@@ -8,7 +8,6 @@ body{
 
 #recipeForm{
     display: inline;
-    
 }
 
 
@@ -19,7 +18,10 @@ body{
     width: 20rem;
     height: auto;
     font-family: 'The Girl Next Door', cursive;
+    font-size: 20px;
+    color: rgb(11,72,107);
 }
+
 
 .formInput {
     width: 20rem;
@@ -32,14 +34,15 @@ header{
     width: 100%;
     background: rgba(121, 189, 154, 0.5);
     font-family: 'The Girl Next Door', cursive;
-    font-size: 30px;
+    font-size: 35px;
 }
 
 nav {
     display: flex;
     width: 100%;
     list-style: none;
-    color: rgb(59,134,134);
+    color: rgb(207,240,158); 
+
     
 }
 
@@ -65,12 +68,25 @@ height: 5rem;
 .recipeCard{
     display: block;
     text-align: center;
-    border-style: groove;
-    border-color:#dcd2d2;
+    border-style: outset;
+    border-color: rgba(207,240,158);
     border-radius: 10px;
     background: rgba(121, 189, 154, 0.5);
     color: rgb(11,72,107);
     font-family: 'Raleway', sans-serif;
+}
+
+#recipeSubmitButton{
+    background: rgba(121, 189, 154, 0.5);
+    border: none;
+    color: rgb(11,72,107);
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'The Girl Next Door', cursive;
+    font-size: 20px;
+    height: 55px;
 }
 
 h3{
@@ -94,7 +110,8 @@ ul{
     list-style-type: none;
 }
 
-.recipeCard > img{
+/* .recipeCard >  */
+img{
     width: 200px;
     border-radius: 10px;
     padding: 15px;
@@ -129,3 +146,80 @@ ul{
     display: none;
 }
 
+#menuForm{
+display: flex;
+}
+
+#menuForm > p {
+    padding-left: 3rem;
+}
+#menuSubmitButton{
+    background: rgba(121, 189, 154, 0.5);    
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'The Girl Next Door', cursive;
+    font-size: 20px;
+    height: 55px;
+  }
+
+select{
+    background: rgba(121, 189, 154, 0.5);
+    color: white;
+    padding: 12px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    height: 55px;
+    outline: none;
+    font-family: 'The Girl Next Door', cursive;
+}
+
+#menuContainer{
+    display: grid;
+    width: 80%;
+    margin: auto;
+    grid-template-columns: repeat(3,33%);
+    column-gap: 30px;
+    padding-top: 5rem;
+}
+
+#menuCard{
+    display: block;
+    text-align: center;
+    border-style: outset;
+    border-color: rgba(207,240,158);
+    border-radius: 10px;
+    background: rgba(121, 189, 154, 0.5);
+    color: rgb(11,72,107);
+    font-family: 'The Girl Next Door', cursive;
+    font-size: 20px;
+  
+}
+
+#menuCard > img {
+    width: 80%;
+   
+}
+
+#showRecipeIngredients{
+    display: none;
+    font-family: 'Raleway', sans-serif;
+}
+#recipeIngredient{
+    display: none;
+}
+
+#deleteMenuButton{
+    display: none;
+}
+
+#showRecipeInstructions{
+    display: none;
+    font-family: 'Raleway', sans-serif;
+}

@@ -24,44 +24,41 @@ function recipeCard(recipes){
         
         const recipeName = document.createElement('h3')
         recipeName.id = 'recipeName'
+        recipeName.innerText = recipe.name 
 
         const picture = document.createElement('img')
         picture.id = 'picture'
+        picture.src = recipe.image_url 
 
         const ingredientList = document.createElement('ul')
         ingredientList.id = 'ingredientList'
 
         const eachIngredient = document.createElement('li')
         eachIngredient.id = 'eachIngredient'
+        eachIngredient.innerText = recipe.ingredients
 
         const moreInfo = document.createElement('p')
         moreInfo.id = 'moreInfo'
+        moreInfo.innerHTML = '<p><i class="arrow down"></i></p>'
 
         const recipeInstructions = document.createElement('p')
         recipeInstructions.id = 'instructions'
+        recipeInstructions.innerText = recipe.instructions
         
         const deleteButton = document.createElement('button')
         deleteButton.id = 'deleteRecipeButton'
+        deleteButton.innerText = 'Delete Recipe'
 
         const editButton = document.createElement('button')
         editButton.id = 'editRecipeButton'
+        editButton.innerText = 'Edit Recipe'
 
-        const submitChangesButton = document.createElement('button')
-        submitChangesButton.id = 'submitRecipeChangesButton'
+        // const submitChangesButton = document.createElement('button')
+        // submitChangesButton.id = 'submitRecipeChangesButton'
+        // submitChangesButton.innerText = 'Submit Changes'
 
         const buttonHolder = document.createElement('div')
         buttonHolder.id = 'recipeButtonHolder'
-
-        
-        recipeName.innerText = recipe.name 
-        picture.src = recipe.image_url 
-        eachIngredient.innerText = recipe.ingredients
-        moreInfo.innerHTML = '<p><i class="arrow down"></i></p>'
-        recipeInstructions.innerText = recipe.instructions
-        deleteButton.innerText = 'Delete Recipe'
-        editButton.innerText = 'Edit Recipe'
-        submitChangesButton.innerText = 'Submit Changes'
-
 
         ingredientList.append(eachIngredient)
         buttonHolder.append(deleteButton, editButton)
@@ -98,8 +95,6 @@ function recipeCard(recipes){
                     const ingredientsForRecipe = eachIngredient.innerText
                     const instructionsForRecipe = recipeInstructions.innerText
                   
-
-                    // console.log('new recipe', newRecipe)
                     fetch(`http://localhost:3000/recipes/${recipe.id}`,{
                     method: 'PATCH',
                     headers: {
@@ -144,12 +139,13 @@ function createRecipe(){
     const recipeIngredients = document.createElement('p')
     const recipeInstructions = document.createElement('p')
     const submitButton = document.createElement('p')
+    
 
     recipeName.innerHTML = `<label for='name'>Recipe Name</label>\n<input type='text' class='formInput' id='recipeName' name='name'/>`
     recipeImage.innerHTML = `<label for='image'>Picture URL</label>\n<input type='text' class='formInput' id='recipeImage' name='image'/>`
     recipeIngredients.innerHTML = `<label for='ingredient'>Ingredients</label>\n<textarea type='text' class='formInput' id='recipeIngredient' name='ingredient'/>`
     recipeInstructions.innerHTML = `<label for='instructions'>Instructions</label>\n<textarea type='text' class='formInput' id='recipeInstructions' name='instructions'/>\n\n `
-    submitButton.innerHTML = `<input type='submit'>`    
+    submitButton.innerHTML = `<input id='recipeSubmitButton' type='submit'>`    
 
     recipeForm.append(recipeName, recipeImage, recipeIngredients, recipeInstructions, submitButton)
     recipeFormHolder.appendChild(recipeForm)
