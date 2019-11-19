@@ -1,7 +1,7 @@
 const  body = document.body
 fetch('http://localhost:3000/users')
 .then(response => response.json())
-.then(createUserCard)
+// .then(createUserCard)
 .then(addAUser)
 
 let show = function (elem) {
@@ -30,9 +30,9 @@ function addAUser(){
     userImage.innerHTML = `<label for='username'>Add Image URL</label>\n<input type='text' class='formInput' id='addUserImage' name='addUserImage'/>`
 
 
-    // const password = document.createElement('p')
-    // password.id = 'createPassword'
-    // password.innerHTML = `<label for='name'>Create Password</label>\n<input type='text' class='formInput' id='createPassword' name='createPassword'/>`
+    const password = document.createElement('p')
+    password.id = 'createPassword'
+    password.innerHTML = `<label for='name'>Create Password</label>\n<input type='text' class='formInput' id='createPassword' name='createPassword'/>`
 
     const newUserSubmitButton = document.createElement('p')
     newUserSubmitButton.innerHTML = `<input id='newUserSubmitButton' type='submit'>` 
@@ -50,11 +50,11 @@ function addAUser(){
             name: formData.get("nameOfUser"),
             username: formData.get("createUsername"),
             image_url: formData.get("addUserImage"),
+            password: formData.get("createPassword")
         }
 
-        console.log('user', user)
     
-        fetch(`http://localhost:3000/users`,{
+        fetch(`https://meal-planner-back-end.herokuapp.com/users`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

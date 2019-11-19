@@ -1,14 +1,14 @@
 const body = document.body
 
-let show = function (elem) {
-    elem.style.display = 'block';
-};
+function show(element) {
+    element.style.display = 'block'
+}
 
-let hide = function (elem) {
-    elem.style.display = 'none';
-};
+function hide(element) {
+    element.style.display = 'none'
+}
 
-fetch('http://localhost:3000/menus')
+fetch('https://meal-planner-back-end.herokuapp.com/menus')
     .then(response => response.json())
     .then(showMenu)
     .then(createMenu)
@@ -125,7 +125,7 @@ function createMenu(){
 
     menuSubmitButton.innerHTML = `<input id='menuSubmitButton' type='submit'>`
 
-    fetch('http://localhost:3000/recipes')
+    fetch('https://meal-planner-back-end.herokuapp.com/recipes')
     .then(response => response.json())
     .then(recipeOptions)
 
@@ -156,7 +156,7 @@ function recipeOptions(recipes){
             recipe_id: formData.get("recipe_id"),
         }
     
-        fetch(`http://localhost:3000/menus`,{
+        fetch(`https://meal-planner-back-end.herokuapp.com/menus`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -173,7 +173,7 @@ function recipeOptions(recipes){
 function deleteMenu(id, e) {
      target = e.target.parentNode.remove()
     console.log('target', target)
-    fetch(`http://localhost:3000/menus/${id}`, {
+    fetch(`https://meal-planner-back-end.herokuapp.com/menus/${id}`, {
         method: 'DELETE'
     })
     

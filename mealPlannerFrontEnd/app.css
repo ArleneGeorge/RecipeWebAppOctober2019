@@ -90,6 +90,11 @@ height: 5rem;
     margin-top: 20px;
 }
 
+#recipeCard > img {
+    width: 80%;
+   
+}
+
 #recipeSubmitButton{
     background: rgba(121, 189, 154, 0.5);
     border-style: outset;
@@ -179,7 +184,7 @@ h4{
 
 #deleteRecipeButton{
     display: none;
-    background: rgba(121, 189, 154, 0.5);
+    background: rgba(59,134,134, 0.5);
     border-style: outset;
     border-color: rgba(207,240,158);
     border-radius: 10px;
@@ -193,7 +198,7 @@ h4{
 
 #editRecipeButton{
     display: none;
-    background: rgba(121, 189, 154, 0.5);
+    background: rgba(59,134,134, 0.5);
     border-style: outset;
     border-color: rgba(207,240,158);
     border-radius: 10px;
@@ -299,7 +304,7 @@ select{
 
 #deleteMenuButton{
     display: none;
-    background: rgba(121, 189, 154, 0.5);
+    background: rgba(59,134,134, 0.5);
     border-style: outset;
     border-color: rgba(207,240,158);
     border-radius: 10px;
