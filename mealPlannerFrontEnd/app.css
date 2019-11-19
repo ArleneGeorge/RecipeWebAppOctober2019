@@ -23,6 +23,17 @@ body{
 }
 
 
+#newUserFormHolder{
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20rem;
+    height: auto;
+    font-family: 'The Girl Next Door', cursive;
+    font-size: 20px;
+    color: rgb(11,72,107);
+}
+
 .formInput {
     width: 20rem;
     height: 20px;
@@ -41,9 +52,11 @@ nav {
     display: flex;
     width: 100%;
     list-style: none;
-    color: rgb(207,240,158); 
+    color: rgb(207,240,158);
+}
 
-    
+a:hover{
+    cursor: pointer;
 }
 
 nav > li{
@@ -75,6 +88,11 @@ height: 5rem;
     color: rgb(11,72,107);
     font-family: 'Raleway', sans-serif;
     margin-top: 20px;
+}
+
+#recipeCard > img {
+    width: 80%;
+   
 }
 
 #recipeSubmitButton{
@@ -124,9 +142,37 @@ img{
     display: grid;
     width: 80%;
     margin: auto;
+    grid-template-columns: repeat(4, 24%);
+    column-gap: 30px;
+    padding-top: 5rem;
+}
+
+#userCardHolder{
+    display: grid;
+    width: 80%;
+    margin: auto;
     grid-template-columns: repeat(3, 32%);
     column-gap: 30px;
     padding-top: 5rem;
+}
+#userCard{
+    display: block;
+    text-align: center;
+    border-style: outset;
+    border-color: rgba(207,240,158);
+    border-radius: 10px;
+    background: rgba(121, 189, 154, 0.5);
+    color: rgb(11,72,107);
+    font-family: 'Raleway', sans-serif;
+    margin-top: 20px;
+}
+
+#newUserFormHolder{
+    display: none;
+}
+
+h4{
+    cursor: pointer;
 }
 #instructions{
     display: none;
@@ -138,7 +184,7 @@ img{
 
 #deleteRecipeButton{
     display: none;
-    background: rgba(121, 189, 154, 0.5);
+    background: rgba(59,134,134, 0.5);
     border-style: outset;
     border-color: rgba(207,240,158);
     border-radius: 10px;
@@ -152,7 +198,7 @@ img{
 
 #editRecipeButton{
     display: none;
-    background: rgba(121, 189, 154, 0.5);
+    background: rgba(59,134,134, 0.5);
     border-style: outset;
     border-color: rgba(207,240,158);
     border-radius: 10px;
@@ -216,7 +262,7 @@ select{
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
     -webkit-appearance: button;
     appearance: button;
-    height: 55px;
+    height: 60px;
     outline: none;
     font-family: 'The Girl Next Door', cursive;
 }
@@ -225,7 +271,7 @@ select{
     display: grid;
     width: 80%;
     margin: auto;
-    grid-template-columns: repeat(3,33%);
+    grid-template-columns: repeat(4,24%);
     column-gap: 30px;
     padding-top: 5rem;
 }
@@ -258,7 +304,7 @@ select{
 
 #deleteMenuButton{
     display: none;
-    background: rgba(121, 189, 154, 0.5);
+    background: rgba(59,134,134, 0.5);
     border-style: outset;
     border-color: rgba(207,240,158);
     border-radius: 10px;

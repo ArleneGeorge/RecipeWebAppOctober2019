@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 resources :menus
 resources :recipes
 resources :favorites, only: [:index, :show, :create, :delete]
-resources :users, only: [:index, :show, :create, :delete]
+resources :users, param: :_username
+  post '/auth/login', to: 'authentication#login'
+  get '/*a', to: 'application#not_found'
 resources :meals, only: [:index, :show]
 resources :weekdays, only: [:index, :show]
 

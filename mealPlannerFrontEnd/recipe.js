@@ -1,17 +1,17 @@
-fetch('http://localhost:3000/recipes')
+fetch('https://meal-planner-back-end.herokuapp.com/recipes')
 .then(response => response.json())
 .then(recipeCard)
 .then(createRecipe)
 
 
 
-let show = function (elem) {
-    elem.style.display = 'block';
-};
+function show(element) {
+    element.style.display = 'block'
+}
 
-let hide = function (elem) {
-    elem.style.display = 'none';
-};
+function hide(element) {
+    element.style.display = 'none'
+}
 
 const body = document.body
 const recipeHolder = document.getElementById('recipeCardHolder')
@@ -37,7 +37,7 @@ function recipeCard(recipes){
         eachIngredient.id = 'eachIngredient'
         eachIngredient.innerText = recipe.ingredients
 
-        const moreInfo = document.createElement('p')
+        const moreInfo = document.createElement('h4')
         moreInfo.id = 'moreInfo'
         moreInfo.innerHTML = '<p><i class="arrow down"></i></p>'
 
@@ -67,11 +67,10 @@ function recipeCard(recipes){
         recipeHolder.appendChild(eachRecipeCard)
 
         
-        moreInfo.addEventListener('click', e => {
+        moreInfo.addEventListener('click', () => {
             
-            if (window.getComputedStyle(recipeInstructions).display === 'none') {
+            if (window.getComputedStyle(ingredientList).display === 'none') {
                 show(ingredientList)
-                // show(eachIngredient)
                 show(recipeInstructions)
                 show(deleteButton)
                 show(editButton)
@@ -79,7 +78,6 @@ function recipeCard(recipes){
             }
             else 
             hide(ingredientList)
-            // hide(eachIngredient)
             hide(recipeInstructions)
             hide(deleteButton)
             hide(editButton)
@@ -99,7 +97,7 @@ function recipeCard(recipes){
                     const ingredientsForRecipe = eachIngredient.innerText
                     const instructionsForRecipe = recipeInstructions.innerText
                   
-                    fetch(`http://localhost:3000/recipes/${recipe.id}`,{
+                    fetch(`https://meal-planner-back-end.herokuapp.com//recipes/${recipe.id}`,{
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -155,7 +153,6 @@ function createRecipe(){
     recipeFormHolder.appendChild(recipeForm)
 
     recipeForm.addEventListener('submit', event =>{
-        event.preventDefault()
         const formData = new FormData(recipeForm)
         
         recipeForm.reset()
@@ -169,7 +166,7 @@ function createRecipe(){
 
         console.log('recipe', recipe)
     
-        fetch(`http://localhost:3000/recipes`,{
+        fetch(`https://meal-planner-back-end.herokuapp.com/recipes`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -183,9 +180,8 @@ function createRecipe(){
 
 function deleteRecipe(id, e) {
     e.target.parentNode.remove()
-    console.log(id)
 
-    fetch(`http://localhost:3000/recipes/${id}`, {
+    fetch(`https://meal-planner-back-end.herokuapp.com/recipes/${id}`, {
         method: 'DELETE'
     })
     

@@ -1,14 +1,14 @@
 const body = document.body
 
-let show = function (elem) {
-    elem.style.display = 'block';
-};
+function show(element) {
+    element.style.display = 'block'
+}
 
-let hide = function (elem) {
-    elem.style.display = 'none';
-};
+function hide(element) {
+    element.style.display = 'none'
+}
 
-fetch('http://localhost:3000/menus')
+fetch('https://meal-planner-back-end.herokuapp.com/menus')
     .then(response => response.json())
     .then(showMenu)
     .then(createMenu)
@@ -44,7 +44,7 @@ fetch('http://localhost:3000/menus')
             showRecipeInstructions.id = 'showRecipeInstructions'
             showRecipeInstructions.innerText = menu.recipe.instructions
 
-            const moreInfo= document.createElement('p')                
+            const moreInfo= document.createElement('h4')                
                 moreInfo.id = 'moreInfo'
                 moreInfo.innerHTML = '<p><i class="arrow down"></i></p>'
 
@@ -81,8 +81,6 @@ fetch('http://localhost:3000/menus')
 
 
 function createMenu(){
-    const menuName = document.createElement('p')
-    menuName.innerHTML = `<label for='name'>Menu Name</label>\n<input type='text' class='formInput' id='menuName' name='name'/>`
 
     const menuFormHolder = document.getElementById('menuFormHolder')
     const menuForm = document.createElement('form')
@@ -127,7 +125,7 @@ function createMenu(){
 
     menuSubmitButton.innerHTML = `<input id='menuSubmitButton' type='submit'>`
 
-    fetch('http://localhost:3000/recipes')
+    fetch('https://meal-planner-back-end.herokuapp.com/recipes')
     .then(response => response.json())
     .then(recipeOptions)
 
@@ -147,8 +145,8 @@ function recipeOptions(recipes){
   
 
 
-    menuSubmitButton.addEventListener('click', event =>{
-        event.preventDefault()
+    menuSubmitButton.addEventListener('click', function (event){
+        // event.preventDefault()
         const formData = new FormData(menuForm)
         
     
@@ -158,7 +156,7 @@ function recipeOptions(recipes){
             recipe_id: formData.get("recipe_id"),
         }
     
-        fetch(`http://localhost:3000/menus`,{
+        fetch(`https://meal-planner-back-end.herokuapp.com/menus`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -175,7 +173,7 @@ function recipeOptions(recipes){
 function deleteMenu(id, e) {
      target = e.target.parentNode.remove()
     console.log('target', target)
-    fetch(`http://localhost:3000/menus/${id}`, {
+    fetch(`https://meal-planner-back-end.herokuapp.com/menus/${id}`, {
         method: 'DELETE'
     })
     
