@@ -1,7 +1,7 @@
 const  body = document.body
 fetch('http://localhost:3000/users')
 .then(response => response.json())
-// .then(createUserCard)
+.then(createUserCard)
 .then(addAUser)
 
 let show = function (elem) {

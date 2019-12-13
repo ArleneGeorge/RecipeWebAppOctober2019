@@ -14,9 +14,6 @@ fetch('https://meal-planner-back-end.herokuapp.com/menus')
     .then(createMenu)
 
 
-    
-    
-
     function showMenu(menus){
         const menuContainter = document.getElementById('menuContainer')
         
@@ -145,8 +142,8 @@ function recipeOptions(recipes){
   
 
 
-    menuSubmitButton.addEventListener('click', function (event){
-        // event.preventDefault()
+    menuSubmitButton.addEventListener('click', event => {
+        event.preventDefault()
         const formData = new FormData(menuForm)
         
     
@@ -155,6 +152,8 @@ function recipeOptions(recipes){
             meal: formData.get("meal"),
             recipe_id: formData.get("recipe_id"),
         }
+        console.log('menus', menus)
+       
     
         fetch(`https://meal-planner-back-end.herokuapp.com/menus`,{
             method: 'POST',
@@ -171,8 +170,8 @@ function recipeOptions(recipes){
 }
 
 function deleteMenu(id, e) {
-     target = e.target.parentNode.remove()
-    console.log('target', target)
+    e.target.parentNode.remove()
+
     fetch(`https://meal-planner-back-end.herokuapp.com/menus/${id}`, {
         method: 'DELETE'
     })
