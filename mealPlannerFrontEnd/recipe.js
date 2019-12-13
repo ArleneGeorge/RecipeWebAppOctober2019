@@ -1,4 +1,4 @@
-fetch('https://meal-planner-back-end.herokuapp.com/recipes')
+fetch('http://localhost:3000/recipes')
 .then(response => response.json())
 .then(recipeCard)
 .then(createRecipe)
@@ -53,9 +53,9 @@ function recipeCard(recipes){
         editButton.id = 'editRecipeButton'
         editButton.innerText = 'Edit Recipe'
 
-        // const submitChangesButton = document.createElement('button')
-        // submitChangesButton.id = 'submitRecipeChangesButton'
-        // submitChangesButton.innerText = 'Submit Changes'
+        const submitChangesButton = document.createElement('button')
+        submitChangesButton.id = 'submitRecipeChangesButton'
+        submitChangesButton.innerText = 'Submit Changes'
 
         const buttonHolder = document.createElement('div')
         buttonHolder.id = 'recipeButtonHolder'
@@ -144,7 +144,7 @@ function createRecipe(){
     
 
     recipeName.innerHTML = `<label for='name'>Recipe Name</label>\n<input type='text' class='formInput' id='recipeName' name='name'/>`
-    recipeImage.innerHTML = `<label for='image'>Picture URL</label>\n<input type='text' class='formInput' id='recipeImage' name='image'/>`
+    recipeImage.innerHTML = `<label for='image'>Picture URL</label>\n<input type='text' class='formInput' id='recipeImage' name='image' placeholder='https://scontent-ort2-2.xx.fbcdn.net/v/t1.0-9/262096_125562217532303_6227025_n.jpg?_nc_cat=106&_nc_ohc=UENRv7azCRgAQnb7ZUeJC9ho2MJwCz6bFuWjWmdA1YVKRiCw_XnV0xiuQ&_nc_ht=scontent-ort2-2.xx&oh=f7749d28db104ad8d0125b875044200e&oe=5E67AAB3'/>`
     recipeIngredients.innerHTML = `<label for='ingredient'>Ingredients</label>\n<textarea type='text' class='formInput' id='recipeIngredients' name='ingredients'/>\n\n `
     recipeInstructions.innerHTML = `<label for='instructions'>Instructions</label>\n<textarea type='text' class='formInput' id='recipeInstructions' name='instructions'/>\n\n `
     submitButton.innerHTML = `<input id='recipeSubmitButton' type='submit'>`    
@@ -153,8 +153,9 @@ function createRecipe(){
     recipeFormHolder.appendChild(recipeForm)
 
     recipeForm.addEventListener('submit', event =>{
+        event.preventDefault()
+
         const formData = new FormData(recipeForm)
-        
         recipeForm.reset()
     
         const recipe = {
@@ -166,7 +167,7 @@ function createRecipe(){
 
         console.log('recipe', recipe)
     
-        fetch(`https://meal-planner-back-end.herokuapp.com/recipes`,{
+        fetch(`http://localhost:3000/recipes`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -181,7 +182,7 @@ function createRecipe(){
 function deleteRecipe(id, e) {
     e.target.parentNode.remove()
 
-    fetch(`https://meal-planner-back-end.herokuapp.com/recipes/${id}`, {
+    fetch(`http://localhost:3000/recipes/${id}`, {
         method: 'DELETE'
     })
     

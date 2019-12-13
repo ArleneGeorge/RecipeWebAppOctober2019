@@ -133,7 +133,7 @@ ul{
 
 /* .recipeCard >  */
 img{
-    height: 200px;
+    max-width: 80%;
     border-radius: 50px;
     padding: 15px;
 }
