@@ -4,7 +4,7 @@
 
 Take those wonderful handwritten recipes from friends and family and store them on this web application. Then in the menu planner you can take those recipes and put them in your menu planner. 
 
-![alternativetext](Recipes-without-instructions-showing.png)
+![Recipe without instructions visible](Recipes-without-instructions-showing.png)
 
 <h1>Built With </h1>
 Ruby on Rails for the backend

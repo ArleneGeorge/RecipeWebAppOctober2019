@@ -1,7 +1,7 @@
 fetch('http://localhost:3000/recipes')
-.then(response => response.json())
-.then(recipeCard)
-.then(createRecipe)
+    .then(response => response.json())
+    .then(recipeCard)
+    .then(createRecipe)
 
 
 
